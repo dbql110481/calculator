@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+<script
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+<script
+    src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<style>
+button{
+    height:40px;
+}
+ 
+</style>
+<script>
+ 
+ 
+window.onload = reset;
+ 
+var num1 = '';
+var num2 = '';
+var op = '';
+ 
+function reset(){
+    console.log('reset')
+    document.querySelector('#op').innerHTML = '';
+    num1 = '';
+    num2 = '';
+    op = '';    
+}
+ 
+function inputNum(n){
+    var input = document.querySelector('#num');
+    
+    if(op == '' || op == null){
+        num1 += n;
+        input.value = num1;
+    } else{
+        num2 += n;
+        input.value = num2;
+    }
+};
+ 
+function inputOp(e){
+    var input = document.querySelector('#op');
+    op = e;
+    input.innerHTML = e;
+};
+ 
+function calculate(){
+    var input = document.querySelector('#num');
+    
+    switch(op){
+    case '+': input.value = parseInt(num1) + parseInt(num2); break;
+    case '-': input.value = num1 - num2; break;
+    case 'x': input.value = num1 * num2; break;
+    case '/': input.value = num1 / num2; break;
+    }
+    
+    reset();
+};
+ 
+ 
+</script>
+</head>
+<body>
+ 
+<div class="container">
+ 
+<table>
+ 
+<tr id="1">
+    <td colspan="3"><input id="num" type="text" readonly class="form-control"></td>
+    <td><button id="op" class="btn btn-secondary btn-block"></button></td>
+</tr>
+ 
+<tr>
+    <td><button name="7" class="btn btn-secondary btn-block" onclick="inputNum('7');">7</button></td>
+    <td><button name="8" class="btn btn-secondary btn-block" onclick="inputNum('8');">8</button></td>
+    <td><button name="9" class="btn btn-secondary btn-block" onclick="inputNum('9');">9</button></td>
+    <td><button name="/" class="btn btn-secondary btn-block" onclick="inputOp('/');">/</button></td>
+</tr>
+ 
+<tr>
+    <td><button name="4" class="btn btn-secondary btn-block" onclick="inputNum('4');">4</button></td>
+    <td><button name="5" class="btn btn-secondary btn-block" onclick="inputNum('5');">5</button></td>
+    <td><button name="6" class="btn btn-secondary btn-block" onclick="inputNum('6');">6</button></td>
+    <td><button name="x" class="btn btn-secondary btn-block" onclick="inputOp('x');">x</button></td>
+</tr>
+ 
+<tr>
+    <td><button name="1" class="btn btn-secondary btn-block" onclick="inputNum('1');">1</button></td>
+    <td><button name="2" class="btn btn-secondary btn-block" onclick="inputNum('2');">2</button></td>
+    <td><button name="3" class="btn btn-secondary btn-block" onclick="inputNum('3');">3</button></td>
+    <td><button name="-" class="btn btn-secondary btn-block" onclick="inputOp('-');">-</button></td>
+</tr>
+ 
+<tr>
+    <td colspan="2"><button name="0" class="btn btn-secondary btn-block" onclick="inputNum('0');">0</button></td>
+    <td><button name="=" class="btn btn-secondary btn-block" onclick="calculate();">=</button></td>
+    <td><button name="+" class="btn btn-secondary btn-block" onclick="inputOp('+');">+</button></td>
+</tr>
+ 
+ 
+ 
+ 
+</table>
+ 
+</div>
+ 
+ 
+</body>
+</html>
